@@ -5,8 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
-gem 'bootsnap',        '1.12.0', require: false
 gem 'bcrypt',          '3.1.18'
+gem 'bootsnap',        '1.12.0', require: false
 gem 'bootstrap-sass',  '3.4.1'
 gem 'importmap-rails', '1.1.0'
 gem 'jbuilder',        '2.11.5'
@@ -18,7 +18,8 @@ gem 'stimulus-rails',  '1.0.4'
 gem 'turbo-rails',     '1.1.1'
 
 group :development, :test do
-  gem 'debug',   '1.5.0', platforms: %i[mri mingw x64_mingw]
+  gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop'
   gem 'sqlite3', '1.4.2'
 end
 
