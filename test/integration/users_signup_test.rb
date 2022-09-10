@@ -15,5 +15,18 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/new'
     assert_select "div:match('id', 'error_explanation')"
     assert_select "div:match('class', 'alert alert-danger')"
+    assert_not flash[:success]
+  end
+
+  test 'valid signup information' do
+    assert_difference 'User.count', 1 do
+      post users_path, params: { user: { name: 'example',
+                                         email: 'example@email.com',
+                                         password: 'abc123',
+                                         password_confirmation: 'abc123' } }
+    end
+    follow_redirect!
+    assert_template 'users/show'
+    assert_not flash[:danger]
   end
 end
